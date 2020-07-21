@@ -1,0 +1,23 @@
+{
+  "name": "cCode",
+  "version": "1.0.0",
+  "description": "Competitive Code Editor",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec 'electron .'",
+    "reset": "git reset --hard"
+  },
+  "repository": "https://github.com/dark-jay/cCode",
+  "keywords": [
+    "Electron",
+    "cCode"
+  ],
+  "author": "Jayanta Nath",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^9.1.0",
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {}
+}
