@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'">
+    <title>cCode</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/btnAndSelectStyle.css">
+
+    <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
+    <script type='text/javascript' src="js/jquery.min.js"></script>
+
+    <script type='text/javascript' src="js/ace/ace.js"></script>
+    <script type='text/javascript' src="js/ace/mode-c_cpp.js"></script>
+    <script type='text/javascript' src="js/ace/mode-text.js"></script>
+    <script type='text/javascript' src="js/ace/theme-twilight.js"></script>
+
+    <style type="text/css" media="screen">
+        #code-editor, #input-editor, #output-editor { 
+            width: 100%;
+            height: 100%;
+            position: relative;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+
+  </head>
+  <body>
+
+    <div class="container">
+
+        <!-- navbar -->
+        <div class="navbar">
+            <div class="navbar-left draggable">
+                <div class="appname">cCode</div>
+            </div>
+            <div class="navbar-right">
+                <ul>
+                    <li><button class="btn btn-min" id="minimize" onclick="minwin()"><i class="fa fa-minus" aria-hidden="true"></i></button></li>
+                    <li><button class="btn btn-max" id="maximize"><i class="fa fa-square-o" aria-hidden="true"></i></button></li>
+                    <li><button class="btn btn-close" id="close"><i class="fa fa-times" aria-hidden="true"></i></button></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <!-- editors -->
+        <div class="editor-wrapper">
+            <div class="editor-left">
+                <!-- appcontrol -->
+                <div class="appcontrol">
+                    <div class="appcontrol-left">
+                        <ul>
+                            <input type="file" id="file-input" style="display: none" >
+                            <li><button class="btn btn-nav"><i class="fa fa-file-o" aria-hidden="true"></i></button></li>
+                            <li><button class="btn btn-open" id="btn-open-click"><i class="fa fa-folder-open-o" aria-hidden="true"></i></button></li>
+                            <li><button class="btn btn-save"><i class="fa fa-floppy-o" aria-hidden="true"></i></button></li>
+                            <li>
+                                <div class="select-wrapper">
+                                    <select class="select-lang">
+                                        <option value="option-1">C++</option>
+                                        <option value="option-2">Python 2</option>
+                                        <option value="option-3">Python 3</option>
+                                    </select>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- editor -->
+                <div class="editor-code">
+                    <div id="code-editor"></div>
+                </div>
+                <!-- lang statistics -->
+                <div class="editor-stat">
+                    <span id="curr-lang">C++</span>
+                </div>
+            </div>
+            <div class="editor-right" id="right_panel">
+                <!-- appcontrol -->
+                <div class="appcontrol">
+                    <div class="appcontrol-right">
+                        <ul>
+                            <li><button class="btn btn-run" onclick="showCompilingInfo()"><i class="fa fa-play-circle-o" aria-hidden="true"></i></button></li>
+                            <li><button class="btn btn-theme"><i class="fa fa-moon-o" aria-hidden="true"></i></button></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- editor -->
+                <div class="editor-input">
+                    <div class="editor-input-header">Std Input</div>
+                    <div id="input-editor"></div>
+                    <div class="editor-input-footer"></div>
+                </div>
+                <!-- editor -->
+                <div class="editor-output">
+                    <div class="editor-output-header">Std Output</div>
+                    <div id="output-editor"></div>
+                    <div class="editor-output-footer"><span id="compiling-detail">Compile info: </span>
+                        <span id="compile-result-spin">
+                            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        var codeEditor = ace.edit("code-editor");
+        var inputEditor = ace.edit("input-editor");
+        var outputEditor = ace.edit("output-editor");
+        
+        //require('./js/app.js');
+        require('./js/navbar.js')
+        require('./js/ace-editor-setup.js')
+        require('./js/open-file.js')
+
+    </script>
+
+  </body>
+</html>

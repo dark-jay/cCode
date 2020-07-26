@@ -1,0 +1,163 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  display: inline-block;
+  list-style: none;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background: rgb(53, 59, 72); /* brithish palette blue nights */
+    color: white;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 22px 1fr;
+    grid-gap: 5px;
+}
+
+.navbar {
+    width: 100%;
+    height: 100%;
+    background: rgb(40, 47, 57);
+    grid-template-columns: auto 1fr auto;
+    user-select: none;
+}
+
+.navbar-left {
+    height: 100%;
+    float: left;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+
+.draggable {
+	-webkit-app-region: drag;
+}
+
+.appname {
+    display: inline-block;
+    color: rgb(200, 214, 229); /* Canadian Palette Light blue ballerina */
+    vertical-align: middle;
+}
+
+.navbar-right {
+    float: right;
+    padding-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+.editor-wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto 30%;
+    grid-template-rows: 1fr;
+    grid-gap: 5px;
+}
+
+.appcontrol-left {
+    float: left;
+    user-select: none;
+}
+
+.editor-left {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px auto 20px; /* appcontrol left, editor, lang stat */
+}
+
+.editor-stat {
+    text-align: right;
+    background: rgb(40, 47, 57);
+    padding-right: 5px;
+    user-select: none;
+}
+
+#curr-lang {
+    border-left: 1px solid grey;
+    margin: 2px;
+    padding-left: 2px;
+    color: silver;
+}
+
+
+
+.editor-right {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 1fr 1fr; /* appcontrol right, editor, editor */
+}
+
+.appcontrol-right {
+    float: left;
+    user-select: none;
+}
+
+.editor-input {
+    background: rgb(28, 28, 36);
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20px auto 20px;
+}
+.editor-input-header {
+    background: rgb(40, 47, 57);
+    padding-left: 3px;
+    padding-top: 3px;
+    text-align: left;
+    font-size: 12px;
+    color: rgb(169, 167, 165);
+    user-select: none;
+}
+.editor-input-footer {
+    background: rgb(53, 59, 72); /* brithish palette blue nights MAIN BG */
+}
+
+.editor-output {
+    background: rgb(28, 28, 36);
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20px auto 20px;
+}
+.editor-output-header {
+    background: rgb(40, 47, 57);
+    padding-left: 3px;
+    padding-top: 3px;
+    text-align: left;
+    font-size: 12px;
+    color: rgb(169, 167, 165);
+    user-select: none;
+}
+.editor-output-footer {
+    background: rgb(40, 47, 57);
+    padding-left: 5px;
+    user-select: none;
+}
+#compiling-detail {
+    margin: 2px;
+    padding-right: 2px;
+    color: silver;
+    user-select: none;
+}
+#compile-result-spin {
+    padding-top: 2px;
+    font-size: 12px;
+    display: none;
+}

@@ -1,0 +1,122 @@
+/* Button */
+/* all common style */
+.btn {
+	background-color: transparent; /* rgb(47, 54, 64); BLue Nights */ /* DodgerBlue; */
+	border: none;
+	color: rgb(169, 167, 165);/* white; */
+	padding: 3px 6px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+/* this piece of code does funny effect whenever there's a mouse click
+*:active {
+	background: white;
+}
+*/
+
+/* min max close button */
+.btn-min:hover {
+	background-color: rgb(87, 96, 111); /* GRISAILLE RoyalBlue; */
+	color: white;
+}
+.btn-max:hover {
+	background-color: rgb(87, 96, 111); /* GRISAILLE RoyalBlue; */
+	color: white;
+}
+.btn-close:hover {
+	background-color: rgb(139, 0, 0); /* Dark red */
+	color: white;
+}
+
+/* Lighter background on mouse-over */
+.btn-nav:hover {
+	background-color: rgb(87, 96, 111); /* GRISAILLE RoyalBlue; */
+	color: white;
+}
+.btn-open:hover {
+	background-color: rgb(87, 96, 111); /* GRISAILLE RoyalBlue; */
+	color: white;
+}
+.btn-save:hover {
+	background-color: rgb(87, 96, 111); /* GRISAILLE RoyalBlue; */
+	color: white;
+}
+
+
+.btn-run:hover {
+	background-color: green; /* GRISAILLE RoyalBlue; */
+	color: white;
+}
+.btn-theme:hover {
+	background-color: rgb(87, 96, 111); /* GRISAILLE RoyalBlue; */
+	color: white;
+}
+
+
+
+/* button :active should always be placed after the hover, otherwise will not work */
+/* not sure its only happen with fontawesome or its just in general as it is */
+.btn:focus {
+	outline: none;
+}
+.btn:active {
+	background-color: rgb(100, 109, 124); /* GRISAILLE RoyalBlue; */
+	color: white;
+}
+/* override :active for run and close button */
+.btn-run:active {
+	background-color: rgb(50, 205, 50);
+	color: white;
+}
+.btn-close:active {
+	background-color: rgb(220, 20, 60); /* crimson red */
+	color: white;
+}
+
+
+
+/* Select */
+select {
+	background: rgb(53, 59, 72); /* rgb(47, 54, 64); BLue Nights */ /*  DodgerBlue; */  /* #F0F3FB; */
+	border: 1px solid rgb(169, 167, 165); /* DodgerBlue; */
+	border-radius: 2px;
+	width: 80px;
+	padding: 3px;
+	font-size: 11px;
+	color: rgb(169, 167, 165);/* white; */
+
+	/* Here's the code we need */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	 -o-appearance: none;
+		appearance: none;
+}
+
+.select-lang:hover {
+	background-color: rgb(87, 96, 111); /* GRISAILLE RoyalBlue; */
+	color: white;
+}
+.select-lang:focus {
+	outline: none;
+}
+
+.select-wrapper {
+	position: relative;
+}
+
+.select-wrapper:after {
+	font-family: FontAwesome;
+  	content: '\f107';
+  	font-size: 15px;
+  	position: relative;
+  	top: 2px;
+  	right: 18px;
+  	color: rgb(169, 167, 165);/* white; */
+  	pointer-events: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
