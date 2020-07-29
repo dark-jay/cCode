@@ -40,7 +40,7 @@
             </div>
             <div class="navbar-right">
                 <ul>
-                    <li><button class="btn btn-min" id="minimize" onclick="minwin()"><i class="fa fa-minus" aria-hidden="true"></i></button></li>
+                    <li><button class="btn btn-min" id="minimize"><i class="fa fa-minus" aria-hidden="true"></i></button></li>
                     <li><button class="btn btn-max" id="maximize"><i class="fa fa-square-o" aria-hidden="true"></i></button></li>
                     <li><button class="btn btn-close" id="close"><i class="fa fa-times" aria-hidden="true"></i></button></li>
                 </ul>
@@ -57,9 +57,9 @@
                     <div class="appcontrol-left">
                         <ul>
                             <input type="file" id="file-input" style="display: none" >
-                            <li><button class="btn btn-nav"><i class="fa fa-file-o" aria-hidden="true"></i></button></li>
+                            <li><button class="btn btn-nav" id="btn-new-click"><i class="fa fa-file-o" aria-hidden="true"></i></button></li>
                             <li><button class="btn btn-open" id="btn-open-click"><i class="fa fa-folder-open-o" aria-hidden="true"></i></button></li>
-                            <li><button class="btn btn-save"><i class="fa fa-floppy-o" aria-hidden="true"></i></button></li>
+                            <li><button class="btn btn-save" id="btn-save-click"><i class="fa fa-floppy-o" aria-hidden="true"></i></button></li>
                             <li>
                                 <div class="select-wrapper">
                                     <select class="select-lang">
@@ -86,7 +86,7 @@
                 <div class="appcontrol">
                     <div class="appcontrol-right">
                         <ul>
-                            <li><button class="btn btn-run" onclick="showCompilingInfo()"><i class="fa fa-play-circle-o" aria-hidden="true"></i></button></li>
+                            <li><button class="btn" id="btn-run"><i class="fa fa-play-circle-o" aria-hidden="true"></i></button></li>
                             <li><button class="btn btn-theme"><i class="fa fa-moon-o" aria-hidden="true"></i></button></li>
                         </ul>
                     </div>
@@ -103,6 +103,7 @@
                     <div id="output-editor"></div>
                     <div class="editor-output-footer"><span id="compiling-detail">Compile info: </span>
                         <span id="compile-result-spin">
+                            <span id="compile-reult" style="display: none;"></span>
                             <i class="fa fa-spinner fa-spin" aria-hidden="true"></i></button>
                         </span>
                     </div>
@@ -117,11 +118,18 @@
         var codeEditor = ace.edit("code-editor");
         var inputEditor = ace.edit("input-editor");
         var outputEditor = ace.edit("output-editor");
-        
-        //require('./js/app.js');
-        require('./js/navbar.js')
-        require('./js/ace-editor-setup.js')
-        require('./js/open-file.js')
+
+        let currCodePathPure = ""; // with single slash
+        let currCodePath = ""; // with double slash
+
+        require('./js/app.js');
+        require('./js/navbar.js');
+        require('./js/ace-editor-setup.js');
+        require('./js/file-operations.js');
+        //require('./js/Compile/compile.js');
+
+        // var executablePath = "C:\\Users\\jay\\Desktop\\test\\Child Process Test in NOde\\main.cpp"
+
 
     </script>
 

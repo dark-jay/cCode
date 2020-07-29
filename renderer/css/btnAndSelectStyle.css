@@ -44,7 +44,7 @@
 }
 
 
-.btn-run:hover {
+#btn-run:hover {
 	background-color: green; /* GRISAILLE RoyalBlue; */
 	color: white;
 }
@@ -65,7 +65,7 @@
 	color: white;
 }
 /* override :active for run and close button */
-.btn-run:active {
+#btn-run:active {
 	background-color: rgb(50, 205, 50);
 	color: white;
 }

@@ -161,3 +161,7 @@ html, body {
     font-size: 12px;
     display: none;
 }
+#compile-reult {
+    padding-top: 2px;
+    font-size: 12px;
+}

@@ -1,0 +1,72 @@
+const fs = require('fs');
+const { dialog } = require('electron').remote;
+
+let btnSaveClick = document.getElementById('btn-save-click');
+let btnOpenClick = document.getElementById('btn-open-click');
+
+
+btnSaveClick.addEventListener("click", () => {
+    //alert('you clicked save button');
+    let content = codeEditor.getSession().getValue();
+    //console.log(content);
+
+    dialog.showSaveDialog()
+        .then( result => {
+            if (result.canceled === false) {
+                console.log("Selected file paths:");
+                console.log(result.filePath);
+                var filePath = result.filePath;
+                currCodePathPure = filePath;
+                var filePath = filePath.split('\\');
+                var filePath = filePath.join('\\\\');
+                currCodePath = filePath;
+                
+                fs.writeFile(filePath, content, (err) => {
+                    if (err) {
+                        console.log("Error creating the file " + err.message);
+                        return;
+                    }
+                    alert("File creation successfull");
+                });
+                
+            }
+        }).catch(err => {
+            console.log(err)
+        });
+}, false);
+
+
+/*
+dialog.showOpenDialog(remote.getCurrentWindow(), {
+    properties: ["openFile", "multiSelections"]
+*/
+btnOpenClick.addEventListener("click", () => {
+    dialog.showOpenDialog({ properties: [ 'openFile', 'multiSelections' ] })
+        .then( result => {
+            if (result.canceled === false) {
+                console.log("Selected file paths:");
+                console.log(result.filePaths[0]);
+                var filePath = result.filePaths[0];
+                currCodePathPure = filePath;
+                var filePath = filePath.split('\\');
+                var filePath = filePath.join('\\\\');
+                currCodePath = filePath;
+                
+                fs.readFile(filePath, "utf-8", (err, data) => {
+                    if (err) {
+                        console.log("Open failed: " + err.message);
+                        return;
+                    }
+                    codeEditor.setValue(data, 1);
+                    codeEditor.focus();
+                    codeEditor.navigateFileEnd();
+                    console.log("File open successfull");
+                });
+                
+            }
+        }).catch(err => {
+            console.log(err)
+        });
+}, false);
+
+
