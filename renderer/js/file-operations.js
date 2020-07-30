@@ -3,6 +3,7 @@ const { dialog } = require('electron').remote;
 
 let btnSaveClick = document.getElementById('btn-save-click');
 let btnOpenClick = document.getElementById('btn-open-click');
+let btnNewClick = document.getElementById('btn-new-click');
 
 
 btnSaveClick.addEventListener("click", () => {
@@ -69,4 +70,8 @@ btnOpenClick.addEventListener("click", () => {
         });
 }, false);
 
+
+btnNewClick.addEventListener("click", () => {
+    alert(`Path of code is:\n${currCodePathPure}`);
+}, false);
 
