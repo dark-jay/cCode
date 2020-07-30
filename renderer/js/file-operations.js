@@ -75,3 +75,16 @@ btnNewClick.addEventListener("click", () => {
     alert(`Path of code is:\n${currCodePathPure}`);
 }, false);
 
+
+const saveFile = () => {
+    let content = codeEditor.getSession().getValue();
+    fs.writeFile(currCodePath, content, (err) => {
+        if (err) {
+            console.log("Error overriding the file " + err.message);
+            return;
+        }
+        console.log('Recent changes updated');
+    });
+}
+
+exports.saveFile = saveFile;

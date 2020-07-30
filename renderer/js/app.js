@@ -3,13 +3,35 @@
 // All of the Node.js APIs are available in this process.
 
 const compile = require('./compile/compile');
+const fo = require('./file-operations');
 
 const btnRun = document.getElementById('btn-run');
+const btnStop = document.getElementById('btn-stop');
+
+init();
 
 btnRun.addEventListener('click', e => {
 
     document.getElementById("compile-reult").style.display = "none";
     document.getElementById("compile-result-spin").style.display = "inline";
-    
+    var compileReult = document.getElementById("compile-reult");
+    compileReult.innerHTML = "";
+
+    fo.saveFile(); // save the curr code so that recent modification gets compiled
     compile.compileCode();
-})
+});
+
+btnStop.addEventListener('click', e => {
+    alert("kill");
+    compile.killProcess();
+});
+
+function init() {
+    btnRun.disabled = false;
+    btnStop.disabled = true;
+
+    if(!currCodePathPure && !currCodePath) {
+        
+    }
+    
+}

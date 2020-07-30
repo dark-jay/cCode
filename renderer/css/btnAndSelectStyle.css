@@ -48,6 +48,10 @@
 	background-color: green; /* GRISAILLE RoyalBlue; */
 	color: white;
 }
+#btn-stop:hover {
+	background-color: rgb(139, 0, 0); /* GRISAILLE RoyalBlue; */
+	color: white;
+}
 .btn-theme:hover {
 	background-color: rgb(87, 96, 111); /* GRISAILLE RoyalBlue; */
 	color: white;
@@ -67,6 +71,10 @@
 /* override :active for run and close button */
 #btn-run:active {
 	background-color: rgb(50, 205, 50);
+	color: white;
+}
+#btn-stop:active {
+	background-color: rgb(220, 20, 60);
 	color: white;
 }
 .btn-close:active {
