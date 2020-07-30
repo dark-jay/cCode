@@ -52,17 +52,11 @@ btnOpenClick.addEventListener("click", () => {
                 var filePath = filePath.split('\\');
                 var filePath = filePath.join('\\\\');
                 currCodePath = filePath;
+
+                store.set('pathPure', currCodePathPure); // with single slash
+                store.set('path', currCodePath); // with double slash
                 
-                fs.readFile(filePath, "utf-8", (err, data) => {
-                    if (err) {
-                        console.log("Open failed: " + err.message);
-                        return;
-                    }
-                    codeEditor.setValue(data, 1);
-                    codeEditor.focus();
-                    codeEditor.navigateFileEnd();
-                    console.log("File open successfull");
-                });
+                readFile(filePath);
                 
             }
         }).catch(err => {
@@ -87,4 +81,18 @@ const saveFile = () => {
     });
 }
 
+const readFile = (filePath) => {
+    fs.readFile(filePath, "utf-8", (err, data) => {
+        if (err) {
+            console.log("Open failed: " + err.message);
+            return;
+        }
+        codeEditor.setValue(data, 1);
+        codeEditor.focus();
+        codeEditor.navigateFileEnd();
+        console.log("File open successfull");
+    });
+}
+
 exports.saveFile = saveFile;
+exports.readFile = readFile;

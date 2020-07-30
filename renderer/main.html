@@ -102,7 +102,7 @@
                 <div class="editor-output">
                     <div class="editor-output-header">Std Output</div>
                     <div id="output-editor"></div>
-                    <div class="editor-output-footer"><span id="compiling-detail">Compile info: </span>
+                    <div class="editor-output-footer"><span id="compiling-detail">Status: </span>
                         <span id="compile-reult"></span>
                         <span id="compile-result-spin">
                             <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
@@ -123,6 +123,16 @@
         let currCodePathPure = ""; // with single slash
         let currCodePath = ""; // with double slash
 
+        const Store = require('./js/store.js');
+        const store = new Store({
+            // We'll call our data file 'last-opened-file'
+            configName: 'last-opened-file',
+            defaults: {
+                // path of the last opened file
+                path: "",
+                pathPure: ""
+            }
+        });
         require('./js/app.js');
         require('./js/navbar.js');
         require('./js/ace-editor-setup.js');

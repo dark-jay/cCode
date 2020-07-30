@@ -30,8 +30,20 @@ function init() {
     btnRun.disabled = false;
     btnStop.disabled = true;
 
+    
+    // if the current code path is empty then
     if(!currCodePathPure && !currCodePath) {
-        
+        currCodePathPure = store.get('pathPure');
+        currCodePath = store.get('path');
+        try {
+            fo.readFile(currCodePath);
+        }
+        catch(err) {
+            console.log('Error Opening the file');
+        }
+    }
+    else {
+
     }
     
 }
