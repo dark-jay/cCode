@@ -11,6 +11,9 @@
     <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
     <script type='text/javascript' src="js/jquery.min.js"></script>
 
+    <script src="js/jquery-resizable.js"></script>
+	<script src="js/jquery-resizableTableColumns.js"></script>
+
     <script type='text/javascript' src="js/ace/ace.js"></script>
     <script type='text/javascript' src="js/ace/mode-c_cpp.js"></script>
     <script type='text/javascript' src="js/ace/mode-text.js"></script>
@@ -35,9 +38,30 @@
 
         <!-- navbar -->
         <div class="navbar">
-            <div class="navbar-left draggable">
-                <div class="appname">cCode</div>
+            <div class="navbar-left">
+                <div class="appname draggable">cCode</div>
             </div>
+            <!-- appcontrol -->
+            <div class="appcontrol">
+                <div class="appcontrol-left">
+                    <ul>
+                        <input type="file" id="file-input" style="display: none" >
+                        <li><button class="btn btn-nav" id="btn-new-click"><i class="fa fa-file-o" aria-hidden="true"></i></button></li>
+                        <li><button class="btn btn-open" id="btn-open-click"><i class="fa fa-folder-open-o" aria-hidden="true"></i></button></li>
+                        <li><button class="btn btn-save" id="btn-save-click"><i class="fa fa-floppy-o" aria-hidden="true"></i></button></li>
+                        <li>
+                            <div class="select-wrapper">
+                                <select class="select-lang">
+                                    <option value="option-1">C++</option>
+                                    <option value="option-2">Python 2</option>
+                                    <option value="option-3">Python 3</option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="draggable"></div>
             <div class="navbar-right">
                 <ul>
                     <li><button class="btn btn-min" id="minimize"><i class="fa fa-minus" aria-hidden="true"></i></button></li>
@@ -52,25 +76,9 @@
         <!-- editors -->
         <div class="editor-wrapper">
             <div class="editor-left">
-                <!-- appcontrol -->
-                <div class="appcontrol">
-                    <div class="appcontrol-left">
-                        <ul>
-                            <input type="file" id="file-input" style="display: none" >
-                            <li><button class="btn btn-nav" id="btn-new-click"><i class="fa fa-file-o" aria-hidden="true"></i></button></li>
-                            <li><button class="btn btn-open" id="btn-open-click"><i class="fa fa-folder-open-o" aria-hidden="true"></i></button></li>
-                            <li><button class="btn btn-save" id="btn-save-click"><i class="fa fa-floppy-o" aria-hidden="true"></i></button></li>
-                            <li>
-                                <div class="select-wrapper">
-                                    <select class="select-lang">
-                                        <option value="option-1">C++</option>
-                                        <option value="option-2">Python 2</option>
-                                        <option value="option-3">Python 3</option>
-                                    </select>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                <!-- editor tabs -->
+                <div class="editor-tabs">
+
                 </div>
                 <!-- editor -->
                 <div class="editor-code">
@@ -81,32 +89,40 @@
                     <span id="curr-lang">C++</span>
                 </div>
             </div>
-            <div class="editor-right" id="right_panel">
-                <!-- appcontrol -->
-                <div class="appcontrol">
-                    <div class="appcontrol-right">
-                        <ul>
-                            <li><button class="btn" id="btn-run"><i class="fa fa-play-circle-o" aria-hidden="true"></i></button></li>
-                            <li><button class="btn" id="btn-stop"><i class="fa fa-stop-circle-o" aria-hidden="true"></i></button></li>
-                            <li><button class="btn btn-theme"><i class="fa fa-moon-o" aria-hidden="true"></i></button></li>
-                        </ul>
+
+            <!-- Splitter for split window control -->
+            <div class="splitter">
+            </div>
+
+            <div class="editor-right">
+                <!-- appcontrol right -->
+                <div class="appcontrol-right">
+                    <ul>
+                        <li><button class="btn" id="btn-run"><i class="fa fa-play-circle-o" aria-hidden="true"></i></button></li>
+                        <li><button class="btn" id="btn-stop"><i class="fa fa-stop-circle-o" aria-hidden="true"></i></button></li>
+                        <li><button class="btn btn-theme"><i class="fa fa-moon-o" aria-hidden="true"></i></button></li>
+                    </ul>
+                </div>
+                <!-- editor io wrapper -->
+                <div class="editor-io-wrapper">
+                    <div class="editor-input">
+                        <div class="editor-input-header">Std Input</div>
+                        <div id="input-editor"></div>
                     </div>
-                </div>
-                <!-- editor -->
-                <div class="editor-input">
-                    <div class="editor-input-header">Std Input</div>
-                    <div id="input-editor"></div>
-                    <div class="editor-input-footer"></div>
-                </div>
-                <!-- editor -->
-                <div class="editor-output">
-                    <div class="editor-output-header">Std Output</div>
-                    <div id="output-editor"></div>
-                    <div class="editor-output-footer"><span id="compiling-detail">Status: </span>
-                        <span id="compile-reult"></span>
-                        <span id="compile-result-spin">
-                            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
-                        </span>
+
+                    <!-- Vertical splitter -->
+                    <div class="splitter-horizontal"></div>
+
+                    <!-- editor -->
+                    <div class="editor-output">
+                        <div class="editor-output-header">Std Output</div>
+                        <div id="output-editor"></div>
+                        <div class="editor-output-footer"><span id="compiling-detail">Status: </span>
+                            <span id="compile-reult"></span>
+                            <span id="compile-result-spin">
+                                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -135,6 +151,7 @@
         });
         require('./js/app.js');
         require('./js/navbar.js');
+        require('./js/resize.js');
         require('./js/ace-editor-setup.js');
         require('./js/file-operations.js');
         require('./js/Compile/compile.js');
