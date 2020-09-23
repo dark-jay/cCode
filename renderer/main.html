@@ -78,7 +78,8 @@
             <div class="editor-left">
                 <!-- editor tabs -->
                 <div class="editor-tabs">
-
+                    <ul id="ul-tab">
+		            </ul>
                 </div>
                 <!-- editor -->
                 <div class="editor-code">
@@ -130,6 +131,7 @@
 
     </div>
 
+    <script type='text/javascript' src="js/tab.js"></script>
     <script>
 
         var codeEditor = ace.edit("code-editor");
@@ -139,15 +141,21 @@
         let currCodePathPure = ""; // with single slash
         let currCodePath = ""; // with double slash
 
+        // variables for maintaing Editor Tabs
+        var tabId = 0; // tabId tracker
+        var currTabId = 0;
+        var editors = []; // ace editor sessions keeper
+        var totNumOfTab = 0; // 0 means no tab or session
+		// note: totNumOfTab always should be 1, it can be done from the init() function by checking existing opening file
+		// after checking how many files has to loaded from config file, totNumOfTab shouble be set accordingly
+        // if there is no file opened before or config file has no record, then leave 0 in totNumOfTab
+        var allOpenedTabsDetail = []; // its a array of object: [{"path":"", "pathPure":"", "tabId":"", "isStored":0}]; 0=no, 1=yes
+
         const Store = require('./js/store.js');
         const store = new Store({
             // We'll call our data file 'last-opened-file'
             configName: 'last-opened-file',
-            defaults: {
-                // path of the last opened file
-                path: "",
-                pathPure: ""
-            }
+            defaults: {}
         });
         require('./js/app.js');
         require('./js/navbar.js');

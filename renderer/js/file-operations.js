@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { dialog } = require('electron').remote;
+//const tab = require('./tab');
 
 let btnSaveClick = document.getElementById('btn-save-click');
 let btnOpenClick = document.getElementById('btn-open-click');
@@ -28,6 +29,9 @@ btnSaveClick.addEventListener("click", () => {
                         return;
                     }
                     alert("File creation successfull");
+                    allOpenedTabsDetail[currTabId].pathPure = currCodePathPure;
+                    allOpenedTabsDetail[currTabId].path = currCodePath;
+                    allOpenedTabsDetail[currTabId].isStored = 1; // 1 means Yes
                 });
                 
             }
@@ -53,10 +57,10 @@ btnOpenClick.addEventListener("click", () => {
                 var filePath = filePath.join('\\\\');
                 currCodePath = filePath;
 
-                store.set('pathPure', currCodePathPure); // with single slash
-                store.set('path', currCodePath); // with double slash
+                //store.set('pathPure', currCodePathPure); // with single slash
+                //store.set('path', currCodePath); // with double slash
                 
-                readFile(filePath);
+                readFile(currCodePath, currCodePathPure);
                 
             }
         }).catch(err => {
@@ -66,7 +70,9 @@ btnOpenClick.addEventListener("click", () => {
 
 
 btnNewClick.addEventListener("click", () => {
-    alert(`Path of code is:\n${currCodePathPure}`);
+    //alert(`Path of code is:\n${currCodePathPure}`);
+    //tab.addTab();
+    addTab(undefined, undefined);
 }, false);
 
 
@@ -81,16 +87,33 @@ const saveFile = () => {
     });
 }
 
-const readFile = (filePath) => {
+const readFile = (filePath, filePathPure) => {
     fs.readFile(filePath, "utf-8", (err, data) => {
         if (err) {
             console.log("Open failed: " + err.message);
             return;
         }
+        /*
         codeEditor.setValue(data, 1);
         codeEditor.focus();
         codeEditor.navigateFileEnd();
         console.log("File open successfull");
+        */
+        var fileName = filePath.slice(filePath.lastIndexOf("\\")+1, filePath.length);
+
+        var tempSingleTabDetail = {};
+        tempSingleTabDetail["path"] = filePath;
+        tempSingleTabDetail["pathPure"] = filePathPure;
+        tempSingleTabDetail["tabId"] = tabId;
+        tempSingleTabDetail["isStored"] = 1; // 1 means Yes
+        allOpenedTabsDetail[tabId] = tempSingleTabDetail;
+
+        addTab(data, fileName);
+
+        // code to modify vars that represent current tab: 
+        // currTabId is handled inside addTab()
+        currCodePathPure = allOpenedTabsDetail[currTabId].pathPure;
+        currCodePath = allOpenedTabsDetail[currTabId].path;
     });
 }
 

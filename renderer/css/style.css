@@ -83,6 +83,59 @@
       grid-template-columns: 1fr;
       grid-template-rows: 30px auto 20px;
   }
+
+  .editor-tabs {
+	height: 30px;
+	/*background: rgb(53, 59, 72); */
+	/*color: white; */
+}
+
+#ul-tab li {
+    width: 80px;
+	margin-left: 5px;
+	padding: 6px;
+	background: transparent;
+	/*margin-top: 5px;
+	border-radius: 10px 10px 0px 0px;*/
+    /*font-size: 12px;*/
+}
+
+#ul-tab .btn-tab-close {
+	font-size: 12px;
+    /* display: table-cell; */
+    vertical-align: middle;
+    margin: 0px;
+    padding-right: 0px;
+    padding-top: 3px;
+	background: transparent;
+    border: 0;
+    color: whitesmoke;
+    display: none;
+    float: right;
+}
+
+#ul-tab .btn-tab-name {
+    font-size: 12px;
+	display: table-cell;
+	vertical-align: middle;
+	background: transparent;
+    border: 0;
+    color: grey;
+    height: 100%;
+    padding-top: 1px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    margin: 0;
+}
+
+#ul-tab .btn-tab-name:focus {
+	outline: none;
+}
+#ul-tab .btn-tab-name:active {
+    /* 
+	background-color: rgb(100, 109, 124); */ /* GRISAILLE RoyalBlue; */
+	color: white;
+}
   
   .editor-stat {
       text-align: right;

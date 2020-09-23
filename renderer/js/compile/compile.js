@@ -19,8 +19,8 @@ const compileCode = () => {
     
     var compileProcess = cp.execFile(compiler, [version, out, outfile, infile], {shell: true}, (error, stdout, stderr)=>{
         if (error) {
-            //console.log(`Name: ${error.name}\nMessage: ${error.message}\nStack: ${error.stack}`);
-            //throw error;
+            console.log(`Name: ${error.name}\nMessage: ${error.message}\nStack: ${error.stack}`);
+            // throw error;
             outputEditor.setValue(`Name: ${error.name}\nMessage: ${error.message}`.toString(), 1);
             stopSpinning();
             showInfo('red', 'COMPILE ERROR');

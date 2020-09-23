@@ -13,7 +13,24 @@ class Store {
     
     this.data = parseDataFile(this.path, opts.defaults);
   }
+
+  get() {
+    return this.data;
+  }
+
+  set(obj) {
+    this.data = {};
+    try {
+      console.log(obj);
+      fs.writeFileSync(this.path, JSON.stringify(obj));
+      console.log('file write successfull at: ' + this.path);
+    }
+    catch(err) {
+      console.log(err);
+    }
+  }
   
+  /*
   // This will just return the property on the `data` object
   get(key) {
     return this.data[key];
@@ -30,6 +47,7 @@ class Store {
         console.log('Error writting the last-opened-file.json');
     }
   }
+  */
 }
 
 function parseDataFile(filePath, defaults) {
