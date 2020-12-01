@@ -6,8 +6,10 @@ It is a simple text editor along with compiler support solely design for comepet
 * Windows OS
 
 ## Technology used
-* (ElectronJS)[https://www.electronjs.org/]: A tool to build cross-platform desktop apps with JavaScript, HTML, and CSS.
-* (Ace.js)[https://ace.c9.io/]: Ace is an embeddable code editor written in JavaScript.
+* (ElectronJS)[https://www.electronjs.org/] 
+A tool to build cross-platform desktop apps with JavaScript, HTML, and CSS.
+* (Ace.js)[https://ace.c9.io/]
+Ace is an embeddable code editor written in JavaScript.
 
 ## cCode in action
 ![Output](https://user-images.githubusercontent.com/27717975/100742413-c4b87780-3400-11eb-8c9e-058a9683ff06.gif)
