@@ -16,7 +16,7 @@
   "author": "Jayanta Nath <jaynath1214@gmail.com>",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^9.1.0"
+    "electron": "^13.6.6"
   },
   "dependencies": {
     "electron-window-state": "^5.0.3",
